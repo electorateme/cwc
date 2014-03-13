@@ -2,5 +2,6 @@
 
 require 'cwc'
 
-print "Command line for cwc"
-print "\n"
+puts "CWC Gem"
+cwc = Cwc::CwcApi.new
+puts "Cwc = "+cwc.inspect

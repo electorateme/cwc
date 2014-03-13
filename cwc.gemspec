@@ -6,8 +6,8 @@ require 'cwc/version'
 Gem::Specification.new do |spec|
   spec.name          = "cwc"
   spec.version       = Cwc::VERSION
-  spec.authors       = ["Hans Gamarra"]
-  spec.email         = ["hans@appmeup.co"]
+  spec.authors       = ["AppMeUp", "Hans Gamarra"]
+  spec.email         = ["jose@appmeup.co", "hans@appmeup.co"]
   spec.summary       = %q{Gem for connecting with CWC API}
   spec.description   = %q{Gem for connecting with CWC API}
   spec.homepage      = ""
