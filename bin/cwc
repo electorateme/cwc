@@ -1,7 +1,20 @@
 #!/usr/bin/env ruby
 
+require 'rubygems'
+require 'commander/import'
 require 'cwc'
 
-puts "CWC Gem"
-cwc = Cwc::CwcApi.new
-puts "Cwc = "+cwc.inspect
+program :version, Cwc::VERSION
+program :description, 'CLI for interacting with cwc api'
+ 
+command :test do |c|
+  c.syntax = 'cwc test [options]'
+  c.summary = 'Tests API connection'
+  c.description = ''
+  c.example 'description', 'command example'
+  c.option '--some-switch', 'Some switch that does something'
+  c.action do |args, options|
+    # Do something or c.when_called Cwc::Commands::Test
+  end
+end
+
