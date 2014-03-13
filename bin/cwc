@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 
-require 'rubygems'
 require 'commander/import'
 require 'cwc'
 
@@ -14,7 +13,6 @@ command :test do |c|
   c.example 'description', 'command example'
   c.option '--some-switch', 'Some switch that does something'
   c.action do |args, options|
-    puts "I'm putting the new cwc object: "+Cwc.api_url
+    puts "I'm putting the new cwc object: "+Cwc.api_url('v2/message')
   end
 end
-

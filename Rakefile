@@ -5,3 +5,8 @@ RSpec::Core::RakeTask.new
 
 task :default => :spec
 task :test => :spec
+
+desc "Open an irb session preloaded with this library"
+task :console do
+  sh "irb -rubygems -I lib -r cwc.rb"
+end
