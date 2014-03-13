@@ -1,13 +1,23 @@
-Gem::Specification.new do |s|
-  s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.name        = 'CWC'
-  s.version     = '0.0.1'
-  s.date        = '2014-03-12'
-  s.summary     = "Connection with CWC API"
-  s.description = "Gem for connecting with CWC API"
-  s.authors     = ["Hans Gamarra"]
-  s.email       = 'hans@appmeup.co'
-  s.files       = ["lib/cwc.rb"]
-  s.homepage    = 'http://rubygems.org/gems/cwc'
-  s.license     = 'MIT'
+# coding: utf-8
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'cwc/version'
+
+Gem::Specification.new do |spec|
+  spec.name          = "cwc"
+  spec.version       = Cwc::VERSION
+  spec.authors       = ["Hans Gamarra"]
+  spec.email         = ["hans@appmeup.co"]
+  spec.summary       = %q{TODO: Write a short summary. Required.}
+  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.homepage      = ""
+  spec.license       = "MIT"
+
+  spec.files         = `git ls-files -z`.split("\x0")
+  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
+  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
+  spec.require_paths = ["lib"]
+
+  spec.add_development_dependency "bundler", "~> 1.5"
+  spec.add_development_dependency "rake"
 end

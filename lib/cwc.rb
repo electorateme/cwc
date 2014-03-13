@@ -1,7 +1,5 @@
-class Cwc
-  def self.hi
-    puts "Hello world!"
-  end
+require "cwc/version"
 
-  
+module Cwc
+  # Your code goes here...
 end
