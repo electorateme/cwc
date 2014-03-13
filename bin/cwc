@@ -14,7 +14,7 @@ command :test do |c|
   c.example 'description', 'command example'
   c.option '--some-switch', 'Some switch that does something'
   c.action do |args, options|
-    # Do something or c.when_called Cwc::Commands::Test
+    puts "I'm putting the new cwc object: "+Cwc.api_url
   end
 end
 

@@ -1,31 +1,21 @@
+# CWC API
+
+# CWC related libs
 require "cwc/version"
 
+#Resources
+require 'yaml'
+
 module Cwc
-  class Api
-    def initialize
-      #
-    end
+  @api_base = "https://test-cwc.house.gov"
+  @api_version = "2"
 
-    # @return [Configuration] The configuration singleton.
-    def self.configuration
-      @configuration ||= Cwc::Configuration.new
-    end
-    
-  end
+  class << self
+    attr_accessor :api_key, :api_base, :api_version
 
-  class Configuration
-    def initialize
-      @api_key = "something"
+    def api_url(url='')
+      @api_base + url
     end
-    
-    # API key for accessing the CWC API
-    #
-    # @example
-    # Adyen.configuration.payment_flow = :select
-    #
-    # @return [String]
-    attr_accessor :api_key
-    
   end
 
 end
