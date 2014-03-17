@@ -1,13 +1,17 @@
+require 'cwc/api/client'
+
 module Cwc
   module Api
     class Message
-
-      def initialize(delivery_json={})
-        @delivery_json = delivery_json
-        
+      extend Cwc::Api::Client
+      def initialize(data={}, autosend = false)
+        @data = data
+        if autosend
+          self.send
+        end
       end
 
-      def to_xml
+      def send
         
       end
     end
