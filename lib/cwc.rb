@@ -1,16 +1,21 @@
 # CWC API
 
-#Resources
+# Resources
 require 'net/http'
 
 # CWC related libs
 require "cwc/version"
-require "cwc/utils"
+require "cwc/utils/url"
+require "cwc/utils/xml"
 require "cwc/cwc"
-#API
+
+# API
 require "cwc/api/client"
 require "cwc/api/message"
-#Errors
+require "cwc/api/offices"
+require "cwc/api/validate"
+
+# Errors
 require "cwc/errors/cwc_error"
 require "cwc/errors/api_error"
 require "cwc/errors/authentication_error"

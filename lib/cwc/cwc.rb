@@ -1,9 +1,9 @@
-require 'cwc/utils'
+require 'cwc/utils/url'
 
 module Cwc
   class << self
     # Includes
-    include Cwc::Utils
+    include Cwc::Utils::URL
 
     # Attributes
     attr_accessor :api_key, :api_base, :api_version
