@@ -1,6 +1,5 @@
 require 'net/http'
 require 'cwc/cwc'
-
 require 'cwc/utils/xml'
 
 module Cwc
@@ -34,8 +33,8 @@ module Cwc
               puts "OK: 200"
               response
             when "400"
-              puts "Error with the data sent to the API. Response: 400"
-              parse_errors response
+              errors = parse_errors(response)
+              raise ApiError.new("There was an error with the request with the following errors:\n"+errors.join("\n")+"\nResponse: 400")
             when "404"
               raise ApiError.new("Command not found. Response: 404")
             else
