@@ -1,7 +1,7 @@
 require 'net/http'
 require 'cwc/cwc'
 
-require 'cwc/utils/xmkl'
+require 'cwc/utils/xml'
 
 module Cwc
   module Api
@@ -46,15 +46,13 @@ module Cwc
       private
         def get uri, params = {}
           uri.query = URI.encode_www_form(params)
-          response = Net::HTTP.get_response(uri)
-          puts "GET: "+response.uri.to_s
-          response
+          puts "GET: "+uri.to_s
+          Net::HTTP.get_response(uri)
         end
 
         def post uri, params = {}
-          response = Net::HTTP.post_form(uri, params)
-          puts "POST: "+response.uri.to_s
-          response
+          puts "POST: "+uri.to_s
+          Net::HTTP.post_form(uri, params)
         end
       
     end
