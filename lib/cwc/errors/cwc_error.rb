@@ -13,8 +13,8 @@ module Cwc
     end
 
     def to_s
-      status_string = @http_status.nil? ? "" : "(Status #{@http_status}) "
-      "#{status_string}#{@message}"
+      status_string = @http_status.nil? ? "" : ANSI.red("(Status #{@http_status}) ")
+      ANSI.red "#{status_string}#{@message}"
     end
   end
 end

@@ -1,4 +1,5 @@
 require 'net/http'
+require 'ansi'
 require 'cwc/cwc'
 require 'cwc/utils/xml'
 
@@ -12,17 +13,15 @@ module Cwc
       end
 
       protected
-        def request method, path, params = {}, headers = {}
+        def request method, path, params_or_data = nil
           uri = URI(Cwc.api_url(path.to_s))
-          # It is neccesary to send the API key as a GET parameter
-          params[:apikey] = Cwc.api_key
           case method.to_s.upcase
           when "GET"
-            get uri, params
+            get uri, params_or_data
           when "POST"
-            post uri, params
+            post uri, params_or_data
           else
-            get uri, params
+            get uri, params_or_data
           end
         end
 
@@ -30,7 +29,7 @@ module Cwc
         def handle_response response
           case response.code
             when "200"
-              puts "OK: 200"
+              puts ANSI.green("OK: 200")
               response
             when "400"
               errors = parse_errors(response)
@@ -44,14 +43,26 @@ module Cwc
 
       private
         def get uri, params = {}
+          params = {} if params.nil?
+          # It is neccesary to send the API key as a GET parameter
+          params[:apikey] = Cwc.api_key
           uri.query = URI.encode_www_form(params)
           puts "GET: "+uri.to_s
-          Net::HTTP.get_response(uri)
+          http = Net::HTTP::new(uri.host, uri.port)
+          request = Net::HTTP::Get.new(uri.request_uri)
+          request.content_type = "application/xml"
+          http.request(request)
         end
 
-        def post uri, params = {}
+        def post uri, data = nil
+          # It is neccesary to send the API key as a GET parameter
+          uri.query = URI.encode_www_form({apikey: Cwc.api_key})
           puts "POST: "+uri.to_s
-          Net::HTTP.post_form(uri, params)
+          http = Net::HTTP::new(uri.host, uri.port)
+          request = Net::HTTP::Post.new(uri.request_uri)
+          request.content_type = "application/xml"
+          request.body = data
+          http.request(request)
         end
       
     end

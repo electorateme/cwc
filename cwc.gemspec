@@ -24,4 +24,5 @@ Gem::Specification.new do |spec|
   
   spec.add_runtime_dependency "commander", "~> 4.1.6"
   spec.add_runtime_dependency "nokogiri", "~> 1.6.1"
+  spec.add_runtime_dependency "ansi"
 end

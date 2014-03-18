@@ -2,6 +2,7 @@
 
 # Resources
 require 'net/http'
+require 'ansi'
 
 # CWC related libs
 require "cwc/version"

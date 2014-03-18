@@ -5,8 +5,11 @@ module Cwc
     class Offices < Client
       def send
         response = request(:get, 'offices')
-        puts "Offices response: "+response.to_s
-        handle_response response
+        if handle_response response
+          # Request was successful
+          puts "Response:\n"+ANSI.yellow(response.body)
+          true
+        end
       end
     end
   end

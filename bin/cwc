@@ -7,7 +7,7 @@ program :version, Cwc::VERSION
 program :description, 'CLI for interacting with cwc api'
  
 command :test do |c|
-  c.syntax = 'cwc test [options]'
+  c.syntax = 'cwc test'
   c.summary = 'Tests API connection'
   c.description = 'Tests API connection'
   c.action do |args, options|
