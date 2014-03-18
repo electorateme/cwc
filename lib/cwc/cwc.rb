@@ -16,11 +16,11 @@ module Cwc
     def api_base= value
       # Add trailing slash if it's missing
       add_trailing_slash value
-      @api_base = URI(value)
+      @api_base = value
     end
 
-    def api_base
-      @api_base.to_s
+    def api_base_as_uri
+      URI(@api_base)
     end
 
     def validate_settings
@@ -42,7 +42,7 @@ module Cwc
     def test_settings
       puts "API Key: "          + self.api_key = "ABC123"
       puts "API Version: "      + self.api_version = "v2"
-      puts "API Base: "         + self.api_base = "http://test.api.com"
+      puts "API Base: "         + self.api_base = "http://hepu.ngrok.com"
       puts "API URL example: "  + self.api_url(self.api_version+"/message")
       true
     end

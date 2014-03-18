@@ -12,4 +12,7 @@ require "cwc/api/client"
 require "cwc/api/message"
 #Errors
 require "cwc/errors/cwc_error"
+require "cwc/errors/api_error"
 require "cwc/errors/authentication_error"
+require "cwc/errors/general_error"
+require "cwc/errors/settings_error"
