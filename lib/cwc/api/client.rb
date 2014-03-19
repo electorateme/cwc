@@ -13,13 +13,13 @@ module Cwc
       end
 
       protected
-        def request method, path, params_or_data = nil
+        def request method, path, params_or_data = nil, verbose = false
           uri = URI(Cwc.api_url(path.to_s))
           case method.to_s.upcase
           when "GET"
             get uri, params_or_data
           when "POST"
-            post uri, params_or_data
+            post uri, params_or_data, verbose
           else
             get uri, params_or_data
           end
@@ -57,7 +57,7 @@ module Cwc
           http.request(request)
         end
 
-        def post uri, data = nil
+        def post uri, data = nil, verbose = false
           # It is neccesary to send the API key as a GET parameter
           uri.query = URI.encode_www_form({apikey: Cwc.api_key})
           puts ANSI.green("POST: "+uri.to_s)
@@ -68,9 +68,11 @@ module Cwc
           request = Net::HTTP::Post.new(uri.request_uri)
           request.content_type = "application/xml"
           request.body = data
-          puts ANSI.magenta("--Start Body--")
-          puts request.body
-          puts ANSI.magenta("--End Body--")
+          if verbose
+            puts ANSI.magenta("--Start Body--")
+            puts request.body
+            puts ANSI.magenta("--End Body--")
+          end
           http.request(request)
         end
       

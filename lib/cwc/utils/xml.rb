@@ -12,8 +12,7 @@ module Cwc
 
       #Parse data from @data as XML according to standard 2.0
       def parse_xml data={}
-        %(
-          <?xml version="1.0" ?>
+        %(<?xml version="1.0" ?>
           <CWC>
             <CWCVersion>2.0</CWCVersion>
             <Delivery>
@@ -81,8 +80,7 @@ module Cwc
               <ConstituentMessage>Dear Congresswoman, this is a test message...</ConstituentMessage>
               <MoreInfo>http://example.com/123/</MoreInfo>
             </Message>
-          </CWC>
-        )
+          </CWC>)
       end
     end
   end

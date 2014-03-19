@@ -22,10 +22,10 @@ module Cwc
         end
       end
 
-      def validate
+      def validate verbose=false
         # Prepare data for request
         request_data = parse_xml
-        response = request(:post, Cwc.api_version+'/validate', request_data)
+        response = request(:post, Cwc.api_version+'/validate', request_data, verbose)
         if handle_response(response)
           # Request was successful
           puts "Response:\n"+ANSI.yellow(response.body)
