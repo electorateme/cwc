@@ -10,15 +10,15 @@ module Cwc
     end
 
     def to_s
-      result = super()
+      result = super()+"\n"
       # Parse errors
       if @response
         errors = parse_errors @response
         if errors.size > 0
           result += ANSI.red(errors.join("\n"))
-          result += ANSI.red("Body of the response:")
-          result += ANSI.red(@response.body)
         end
+        result += ANSI.red("\nBody of the response:\n")
+        result += ANSI.red(@response.body)
       end
       result
     end
