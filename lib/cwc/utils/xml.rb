@@ -7,7 +7,7 @@ module Cwc
       def parse_errors response
         @response ||= response
         @xml_response ||= Nokogiri::XML(response.body)
-        return @xml_response.css("Error").map{ |error| error.text }
+        return @xml_response.css("Error").map{ |error| error.text } || ["No errors thrown by the server"]
       end
     end
   end

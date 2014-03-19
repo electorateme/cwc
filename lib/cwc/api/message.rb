@@ -48,7 +48,7 @@ module Cwc
               <CampaignId>3d968ttf6ecad3c29a3a629280e686cf0c3f5d5a86aff3cal2020c923adc4444</CampaignId>
             </Delivery>
             <Recipient>
-              <MemberOffice>HCA48</MemberOffice>
+              <MemberOffice>HVA01</MemberOffice>
               <IsResponseRequested>N</IsResponseRequested>
               <NewsletterOptIn>Y</NewsletterOptIn>
             </Recipient>
