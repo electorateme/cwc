@@ -10,7 +10,7 @@ module Cwc
     end
 
     def to_s
-      super
+      ANSI.red(@message)
       # Parse errors
       if @response
         errors = parse_errors @response
