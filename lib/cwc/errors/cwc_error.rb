@@ -10,7 +10,7 @@ module Cwc
     end
 
     def to_s
-      ANSI.red("#{status_string}#{@message}")
+      ANSI.red(@message)
     end
   end
 end
