@@ -27,7 +27,7 @@ module Cwc
         %(
           <?xml version="1.0" ?>
           <CWC>
-            <CWCVersion>#{Cwc.api_version_number}</CWCVersion>
+            <CWCVersion>2.0</CWCVersion>
             <Delivery>
               <DeliveryId>GHXX1236285LFVUID194HDC16452ADEE</DeliveryId>
               <DeliveryDate>20121023</DeliveryDate>
@@ -48,7 +48,7 @@ module Cwc
               <CampaignId>3d968ttf6ecad3c29a3a629280e686cf0c3f5d5a86aff3cal2020c923adc4444</CampaignId>
             </Delivery>
             <Recipient>
-              <MemberOffice>HVA01</MemberOffice>
+              <MemberOffice>HVA04</MemberOffice>
               <IsResponseRequested>N</IsResponseRequested>
               <NewsletterOptIn>Y</NewsletterOptIn>
             </Recipient>
