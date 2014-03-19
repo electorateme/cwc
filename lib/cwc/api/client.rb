@@ -49,6 +49,9 @@ module Cwc
           uri.query = URI.encode_www_form(params)
           puts "GET: "+uri.to_s
           http = Net::HTTP::new(uri.host, uri.port)
+          # Use SSL
+          http.use_ssl = true
+          http.verify_mode = OpenSSL::SSL::VERIFY_NONE
           request = Net::HTTP::Get.new(uri.request_uri)
           request.content_type = "application/xml"
           http.request(request)
@@ -59,6 +62,9 @@ module Cwc
           uri.query = URI.encode_www_form({apikey: Cwc.api_key})
           puts "POST: "+uri.to_s
           http = Net::HTTP::new(uri.host, uri.port)
+          # Use SSL
+          http.use_ssl = true
+          http.verify_mode = OpenSSL::SSL::VERIFY_NONE
           request = Net::HTTP::Post.new(uri.request_uri)
           request.content_type = "application/xml"
           request.body = data
