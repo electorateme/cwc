@@ -32,8 +32,7 @@ module Cwc
               puts ANSI.green("OK: 200")
               response
             when "400"
-              errors = parse_errors(response)
-              raise ApiError.new("There was an error with the request with the following errors:\n"+errors.join("\n")+"\nResponse: 400\nBody:\n"+response.body)
+              raise ApiError.new("An error occurred with the request. Response: 400", response)
             when "404"
               raise ApiError.new("Command not found. Response: 404")
             else
