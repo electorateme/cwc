@@ -44,6 +44,14 @@ module Cwc
 
     # Test function
     def test_settings
+      puts "API Key: "          + self.api_key = "ABC123"
+      puts "API Version: "      + self.api_version = "v2"
+      puts "API Base: "         + self.api_base = "http://hepu.ngrok.com"
+      puts "API URL example: "  + self.api_url(self.api_version+"/message")
+      true
+    end
+
+    def configure
       puts "API Key: "          + self.api_key = "bf4eb605ab14cd99b4dfd7a8ee047715d28b2cb9"
       puts "API Version: "      + self.api_version = "v2"
       puts "API Base: "         + self.api_base = "https://test-cwc.house.gov"
