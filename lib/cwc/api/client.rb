@@ -33,7 +33,7 @@ module Cwc
               response
             when "400"
               errors = parse_errors(response)
-              raise ApiError.new("There was an error with the request with the following errors:\n"+errors.join("\n")+"\nResponse: 400")
+              raise ApiError.new("There was an error with the request with the following errors:\n"+errors.join("\n")+"\nResponse: 400\nBody:\n"+response.body)
             when "404"
               raise ApiError.new("Command not found. Response: 404")
             else
