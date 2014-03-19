@@ -17,7 +17,7 @@ module Cwc
         if errors.size > 0
           result += ANSI.red(errors.join("\n"))
         end
-        result += ANSI.red("\nBody of the response:\n")
+        result += ANSI.red("\nResponse:\n")
         result += ANSI.red(@response.body)
       end
       result

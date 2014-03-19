@@ -12,13 +12,16 @@ module Cwc
 
       #Parse data from @data as XML according to standard 2.0
       def parse_xml data={}
+        # Static fields
+        data[:deliveryagent] = "Electorate.me"
+        # XML data
         %(<?xml version="1.0" ?>
           <CWC>
             <CWCVersion>2.0</CWCVersion>
             <Delivery>
               <DeliveryId>GHXX1236285LFVUID194HDC16452ADEE</DeliveryId>
               <DeliveryDate>20121023</DeliveryDate>
-              <DeliveryAgent>Your Delivery Agent</DeliveryAgent>
+              <DeliveryAgent>#{data[:deliveryagent]}</DeliveryAgent>
               <DeliveryAgentAckEmailAddress>deliveryagent@example.com</DeliveryAgentAckEmailAddress>
               <DeliveryAgentContact>
                 <DeliveryAgentContactName>John Smith</DeliveryAgentContactName>
