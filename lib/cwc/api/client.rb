@@ -47,7 +47,7 @@ module Cwc
           # It is neccesary to send the API key as a GET parameter
           params[:apikey] = Cwc.api_key
           uri.query = URI.encode_www_form(params)
-          puts "GET: "+uri.to_s
+          puts ANSI.green("GET: "+uri.to_s)
           http = Net::HTTP::new(uri.host, uri.port)
           # Use SSL
           http.use_ssl = true
@@ -60,7 +60,7 @@ module Cwc
         def post uri, data = nil
           # It is neccesary to send the API key as a GET parameter
           uri.query = URI.encode_www_form({apikey: Cwc.api_key})
-          puts "POST: "+uri.to_s
+          puts ANSI.green("POST: "+uri.to_s)
           http = Net::HTTP::new(uri.host, uri.port)
           # Use SSL
           http.use_ssl = true
@@ -68,6 +68,9 @@ module Cwc
           request = Net::HTTP::Post.new(uri.request_uri)
           request.content_type = "application/xml"
           request.body = data
+          puts ANSI.magenta("--Start Body--")
+          puts request.body
+          puts ANSI.magenta("--End Body--")
           http.request(request)
         end
       
