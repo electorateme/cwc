@@ -10,7 +10,8 @@ module Cwc
     @api_base = "http://test-cwc.house.gov/"
 
     # Attributes
-    attr_accessor :api_key, :api_base, :api_version, :api_version_number
+    attr_accessor :api_key, :api_base
+    attr_reader :api_version, :api_version_number
 
     def api_url url=''
       validate_settings
@@ -38,14 +39,13 @@ module Cwc
       end
       # Validate API version
       unless @api_version
-        raise SettingsError.new('No API version provided. Set your API base using "Cwc.api_version = <API-VERSION>"')
+        raise SettingsError.new('No API version provided')
       end
     end
 
     # Test function
     def test_settings
       puts "API Key: "          + self.api_key = "ABC123"
-      puts "API Version: "      + self.api_version = "v2"
       puts "API Base: "         + self.api_base = "http://hepu.ngrok.com"
       puts "API URL example: "  + self.api_url(self.api_version+"/message")
       true
@@ -53,7 +53,6 @@ module Cwc
 
     def configure
       puts "API Key: "          + self.api_key = "bf4eb605ab14cd99b4dfd7a8ee047715d28b2cb9"
-      puts "API Version: "      + self.api_version = "v2"
       puts "API Base: "         + self.api_base = "https://test-cwc.house.gov"
       puts "API URL example: "  + self.api_url(self.api_version+"/message")
       true

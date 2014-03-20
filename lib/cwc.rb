@@ -14,7 +14,6 @@ require "cwc/cwc"
 require "cwc/api/client"
 require "cwc/api/message"
 require "cwc/api/offices"
-require "cwc/api/validate"
 
 # Errors
 require "cwc/errors/cwc_error"
