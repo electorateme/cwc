@@ -5,13 +5,13 @@ module Cwc
     # Includes
     include Cwc::Utils::URL
 
-    @api_version_number = "2.0"
-    @api_version = "v2"
-    @api_base = "http://test-cwc.house.gov/"
-
     # Attributes
     attr_accessor :api_key, :api_base
     attr_reader :api_version, :api_version_number
+
+    @api_version_number = self.api_version_number = "2.0"
+    @api_version = self.api_version = "v2"
+    @api_base = "http://test-cwc.house.gov/"
 
     def api_url url=''
       validate_settings
