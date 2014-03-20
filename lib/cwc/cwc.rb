@@ -47,7 +47,7 @@ module Cwc
     def test_settings
       puts "API Key: "          + @api_key = "ABC123"
       puts "API Base: "         + @api_base = "http://hepu.ngrok.com"
-      puts "API URL example: "  + self.api_url(@api_version+"/message")
+      puts "API URL example: "  + self.api_url(@api_version+"/offices")
       true
     end
 
