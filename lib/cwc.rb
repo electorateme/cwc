@@ -8,6 +8,7 @@ require 'ansi'
 require "cwc/version"
 require "cwc/utils/url"
 require "cwc/utils/xml"
+require "cwc/utils/random"
 require "cwc/cwc"
 
 # API

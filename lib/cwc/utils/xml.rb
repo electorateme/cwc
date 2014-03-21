@@ -12,8 +12,6 @@ module Cwc
 
       #Parse data from @data as XML according to standard 2.0
       def parse_xml data={}
-        # Static fields
-        data[:delivery][:agent] = "Electorate.me, LLC"
         # XML data
         begin
           %(<?xml version="1.0" ?>
