@@ -7,9 +7,13 @@ module Cwc
 
       def initialize(data={}, autosend = false)
         super()
-        @data = data
-        if autosend === true
-          self.send
+        if block_given?
+          yield self 
+        else
+          @data = data
+          if autosend === true
+            self.send
+          end
         end
       end
 
