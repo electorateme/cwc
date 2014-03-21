@@ -14,8 +14,6 @@ module Cwc
       end
 
       def send ssl = true, verbose = false
-        # Preprocess data
-        preprocess_data
         # Prepare data for request
         request_data = parse_xml @data
         response = request(:post, Cwc.api_version+'/message', request_data, ssl, verbose)
@@ -27,8 +25,6 @@ module Cwc
       end
 
       def validate ssl = true, verbose=false
-        # Preprocess data
-        preprocess_data
         # Prepare data for request
         request_data = parse_xml
         response = request(:post, Cwc.api_version+'/validate', request_data, ssl, verbose)
@@ -108,12 +104,6 @@ module Cwc
           }
         }
       end
-
-      private
-        def preprocess_data
-          @data[:delivery] = {} unless @data.has_key?(:delivery)
-          @data[:delivery][:id] = Cwc::Utils::Random.guid
-        end
     end
   end
 end
