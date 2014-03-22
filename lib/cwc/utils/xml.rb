@@ -73,7 +73,7 @@ module Cwc
                 <MoreInfo>#{data[:message][:moreinfo]}</MoreInfo>
               </Message>
             </CWC>)
-          rescue NoMethodError => e
+          rescue StandardError => e
             # Get the line in the code where the error was generated
             error_line = e.backtrace[0].split(":")[1].to_i
             # Find the previous line in this file
