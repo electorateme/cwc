@@ -30,7 +30,7 @@ module Cwc
                 <Organization>#{data[:delivery][:organization]}</Organization>
                 <OrganizationContact>
                   <OrganizationContactName>#{data[:delivery][:organizationcontact][:name]}</OrganizationContactName>
-                  <OrganizationContactEmail>#{data[:delivery][:organizationcontact][:email]}/OrganizationContactEmail>
+                  <OrganizationContactEmail>#{data[:delivery][:organizationcontact][:email]}</OrganizationContactEmail>
                   <OrganizationContactPhone>#{data[:delivery][:organizationcontact][:phone]}</OrganizationContactPhone>
                 </OrganizationContact>
                 <OrganizationAbout>#{data[:delivery][:organizationabout]}</OrganizationAbout>
