@@ -13,19 +13,19 @@ module Cwc
         Cwc.validate_settings
       end
 
-      protected
-        def request method, path, params_or_data = nil, ssl = true, verbose = false
-          uri = URI(Cwc.api_url(path.to_s))
-          case method.to_s.upcase
-          when "GET"
-            get uri, params_or_data, ssl
-          when "POST"
-            post uri, params_or_data, ssl, verbose
-          else
-            get uri, params_or_data, ssl
-          end
+      def request method, path, params_or_data = nil, ssl = true, verbose = false
+        uri = URI(Cwc.api_url(path.to_s))
+        case method.to_s.upcase
+        when "GET"
+          get uri, params_or_data, ssl, verbose
+        when "POST"
+          post uri, params_or_data, ssl, verbose
+        else
+          get uri, params_or_data, ssl, verbose
         end
+      end
 
+      protected
         # Handles the response from the request done to the API
         def handle_response response
           case response.code
@@ -42,12 +42,12 @@ module Cwc
         end
 
       private
-        def get uri, params = {}, ssl = true
+        def get uri, params = {}, ssl = true, verbose = false
           params = {} if params.nil?
           # It is neccesary to send the API key as a GET parameter
           params[:apikey] = Cwc.api_key
           uri.query = URI.encode_www_form(params)
-          puts ANSI.green("GET: "+uri.to_s)
+          puts ANSI.green("GET: "+uri.to_s) if verbose
           http = Net::HTTP::new(uri.host, uri.port)
           # Use SSL
           http.use_ssl = ssl
@@ -60,7 +60,7 @@ module Cwc
         def post uri, data = nil, ssl = true, verbose = false
           # It is neccesary to send the API key as a GET parameter
           uri.query = URI.encode_www_form({apikey: Cwc.api_key})
-          puts ANSI.green("POST: "+uri.to_s)
+          puts ANSI.green("POST: "+uri.to_s) if verbose
           http = Net::HTTP::new(uri.host, uri.port)
           # Use SSL
           http.use_ssl = ssl

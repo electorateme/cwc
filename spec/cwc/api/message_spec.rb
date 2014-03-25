@@ -7,7 +7,7 @@ describe Cwc::Api::Message do
     @example_data ||= Cwc::Api::Message.example_data
   end
 
-  context "new" do
+  context "when creating" do
     it "should receive data as a hash" do
       message = Cwc::Api::Message.new
       message.data = @example_data
