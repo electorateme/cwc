@@ -5,6 +5,9 @@ module Cwc
     class Message < Client
       attr_accessor :data
 
+      default_parameter :message_url, Cwc.api_version+'/message'
+      default_parameter :validate_url, Cwc.api_version+'/validate'
+
       def initialize(data={}, autosend = false)
         super()
         if block_given?
@@ -18,9 +21,7 @@ module Cwc
       end
 
       def send ssl = true, verbose = false
-        # Prepare data for request
-        request_data = parse_xml @data
-        response = request(:post, Cwc.api_version+'/message', request_data, ssl, verbose)
+        response = request(:post, get(:message_url), get_data_xml, ssl, verbose)
         if handle_response(response)
           # Request was successful
           puts "Response:\n"+ANSI.yellow(response.body)
@@ -30,8 +31,7 @@ module Cwc
 
       def validate ssl = true, verbose=false
         # Prepare data for request
-        request_data = parse_xml
-        response = request(:post, Cwc.api_version+'/validate', request_data, ssl, verbose)
+        response = request(:post, get(:validate_url), get_data_xml, ssl, verbose)
         if handle_response(response)
           # Request was successful
           puts "Response:\n"+ANSI.yellow(response.body)
@@ -107,6 +107,11 @@ module Cwc
             moreinfo: "http://example.com/123/"
           }
         }
+      end
+
+      def get_data_xml
+        # Get XML from Cwc::Utils::XML
+        parse_xml @data
       end
     end
   end

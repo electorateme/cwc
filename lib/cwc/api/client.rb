@@ -2,10 +2,11 @@ require 'net/http'
 require 'ansi'
 require 'cwc/cwc'
 require 'cwc/utils/xml'
+require 'cwc/utils/parameters'
 
 module Cwc
   module Api
-    class Client
+    class Client < Cwc::Utils::Parameters
       include Cwc::Utils::XML
 
       def initialize

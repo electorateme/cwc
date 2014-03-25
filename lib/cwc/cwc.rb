@@ -1,13 +1,7 @@
 require 'cwc/utils/url'
+require 'cwc/utils/parameters'
 
 module Cwc
-  @@configuration = {
-    #Default configuration
-    api_version_number: "2.0",
-    api_version: "v2",
-    api_base: "http://test-cwc.house.gov/"
-  }
-
   class << self
     # Includes
     include Cwc::Utils::URL
@@ -15,6 +9,13 @@ module Cwc
     # Attributes
     attr_accessor :api_key, :api_base
     attr_reader :api_version, :api_version_number
+
+    # Default configuration
+    @@configuration = {
+      api_version_number: "2.0",
+      api_version: "v2",
+      api_base: "http://test-cwc.house.gov/"
+    }
 
     # Set and Get for configuration
     def set property, value
@@ -81,11 +82,15 @@ module Cwc
     end
 
     # Test function
-    def test_settings
-      puts "API Key: "          + self.api_key = "ABC123"
-      puts "API Version: "      + self.api_version
-      puts "API Base: "         + self.api_base = "http://hepu.ngrok.com"
-      puts "API URL example: "  + self.api_url(self.api_version+"/message")
+    def test_settings verbose = true
+      self.api_key = "ABC123"
+      self.api_base = "http://hepu.ngrok.com"
+      if verbose
+        puts "API Key: "          + self.api_key
+        puts "API Version: "      + self.api_version
+        puts "API Base: "         + self.api_base
+        puts "API URL example: "  + self.api_url(self.api_version+"/message")
+      end
       true
     end
   end
