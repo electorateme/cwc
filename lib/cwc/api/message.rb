@@ -5,8 +5,8 @@ module Cwc
     class Message < Client
       attr_accessor :data
 
-      default_parameter :message_url, Cwc.api_version+'/message'
-      default_parameter :validate_url, Cwc.api_version+'/validate'
+      default_parameter :message_url, Cwc.api_version+'/message', true
+      default_parameter :validate_url, Cwc.api_version+'/validate', true
 
       def initialize(data={}, autosend = false)
         super()
@@ -24,7 +24,7 @@ module Cwc
         response = request(:post, get(:message_url), get_data_xml, ssl, verbose)
         if handle_response(response)
           # Request was successful
-          puts "Response:\n"+ANSI.yellow(response.body)
+          puts "Response:\n"+ANSI.yellow(response.body) if verbose
           true
         end
       end
@@ -34,7 +34,7 @@ module Cwc
         response = request(:post, get(:validate_url), get_data_xml, ssl, verbose)
         if handle_response(response)
           # Request was successful
-          puts "Response:\n"+ANSI.yellow(response.body)
+          puts "Response:\n"+ANSI.yellow(response.body) if verbose
           true
         end
       end

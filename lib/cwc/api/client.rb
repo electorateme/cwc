@@ -27,10 +27,10 @@ module Cwc
 
       protected
         # Handles the response from the request done to the API
-        def handle_response response
+        def handle_response response, verbose = true
           case response.code
             when "200"
-              puts ANSI.green("OK: 200")
+              puts ANSI.green("OK: 200") if verbose
               response
             when "400"
               raise ApiError.new("An error occurred with the request. Response: 400", response)

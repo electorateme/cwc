@@ -7,7 +7,7 @@ describe Cwc::Api::Client do
     @client = Cwc::Api::Client.new
   end
 
-  context "when server is responding" do
+  context "with server responding correctly" do
     before(:all) do
       @url = "http://www.google.com"
     end
@@ -19,7 +19,7 @@ describe Cwc::Api::Client do
     end
   end
 
-  context "when server URL is incorrect" do
+  context "with URL broken" do
     before(:all) do
       @url = "not/working/domain"
     end
