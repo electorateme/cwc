@@ -48,7 +48,7 @@ module Cwc
           delivery: {
             id: SecureRandom.uuid.gsub("-", ""),
             date: Time.now.strftime("%Y%m%d"), #Example time
-            agent: "Electorate.me",
+            agent: "ElectorateMe",
             ackemailaddress: "email_acknowledge@electorate.me",
             agentcontact: {
               name: "Dan Haecker",
