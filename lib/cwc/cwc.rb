@@ -13,7 +13,7 @@ module Cwc
     @@configuration = {
       api_version_number: "2.0",
       api_version: "v2",
-      api_base: "http://test-cwc.house.gov/"
+      api_base: "https://test-cwc.house.gov/"
     }
 
     # Set and Get for configuration

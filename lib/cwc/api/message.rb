@@ -1,4 +1,5 @@
 require 'cwc/api/client'
+require "securerandom"
 
 module Cwc
   module Api
@@ -45,14 +46,14 @@ module Cwc
       def self.example_data
         {
           delivery: {
-            id: "GHXX1236285LFVUID194HDC16452ADEE",
-            date: "20121023",
+            id: SecureRandom.uuid,
+            date: Time.zone.now.strftime("%Y%m%d"),
             agent: "Electorate.me",
-            agentackemailaddress: "deliveryagent@example.com",
+            agentackemailaddress: "email_acknowledge@electorate.me",
             agentcontact: {
-              name: "John Smith",
-              email: "john.smith@test.com",
-              phone: "202-000-0000"
+              name: "Dan Haecker",
+              email: "dan@electorate.me",
+              phone: "703-594-1360"
             },
             organization: "Example Organization",
             organizationcontact: {
@@ -89,20 +90,10 @@ module Cwc
           message: {
             subject: "Example subject for demonstration",
             libraryofcongresstopics: {
-              libraryofcongresstopic: "Education",
-              libraryofcongresstopic: "Science, Technology, Communications"
+              libraryofcongresstopic: "Congress"
             },
             bills: {
-              bill: {
-                congress: "111",
-                typeabbreviation: "hr",
-                number: "233"
-              },
-              bill: {
-                congress: "111",
-                typeabbreviation: "s",
-                number: "22"
-              }
+              #Empty
             },
             proorcon: "Pro",
             organizationstatement: "Lorem Ipsum",
