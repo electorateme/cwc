@@ -49,7 +49,7 @@ module Cwc
             id: SecureRandom.uuid,
             date: Time.now.strftime("%Y%m%d"), #Example time
             agent: "Electorate.me",
-            agentackemailaddress: "email_acknowledge@electorate.me",
+            ackemailaddress: "email_acknowledge@electorate.me",
             agentcontact: {
               name: "Dan Haecker",
               email: "dan@electorate.me",
