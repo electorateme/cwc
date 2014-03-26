@@ -3,38 +3,41 @@ require 'cwc/api/client'
 module Cwc
   module Api
     class Message < Client
-      attr_accessor :data
+      attr_accessor :data, :message_url
 
-      default_parameter :message_url, Cwc.api_version+'/message', true
-      default_parameter :validate_url, Cwc.api_version+'/validate', true
+      @@message_url = Cwc.api_version+'/message'
+      @@validate_url = Cwc.api_version+'/validate'
 
-      def initialize(data={}, autosend = false)
+      def initialize(data={})
         super()
         if block_given?
           yield self 
         else
           @data = data
-          if autosend === true
-            self.send
-          end
         end
       end
 
-      def send ssl = true, verbose = false
-        response = request(:post, get(:message_url), get_data_xml, ssl, verbose)
-        if handle_response(response)
+      def send! options = {}
+        options[:ssl] = true unless options.has_key? :ssl
+        options[:verbose] = true unless options.has_key? :verbose
+        options[:body] = get_data_xml
+        response = request(:post, @@message_url, options)
+        if handle_response(response, options[:verbose])
           # Request was successful
-          puts "Response:\n"+ANSI.yellow(response.body) if verbose
-          true
+          puts "Response:\n"+ANSI.yellow(response.body) if options[:verbose]
+          response.code
         end
       end
 
-      def validate ssl = true, verbose=false
+      def validate! options = {}
+        options[:ssl] = true unless options.has_key? :ssl
+        options[:verbose] = true unless options.has_key? :verbose
+        options[:body] = get_data_xml
         # Prepare data for request
-        response = request(:post, get(:validate_url), get_data_xml, ssl, verbose)
-        if handle_response(response)
+        response = request(:post, @@validate_url, options)
+        if handle_response(response, options[:verbose])
           # Request was successful
-          puts "Response:\n"+ANSI.yellow(response.body) if verbose
+          puts "Response:\n"+ANSI.yellow(response.body) if options[:verbose]
           true
         end
       end

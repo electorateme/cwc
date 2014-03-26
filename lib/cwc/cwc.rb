@@ -1,5 +1,4 @@
 require 'cwc/utils/url'
-require 'cwc/utils/parameters'
 
 module Cwc
   class << self

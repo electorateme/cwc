@@ -9,7 +9,7 @@ describe Cwc::Api::Offices do
 
   context "with working URL" do
     it "should request to the server" do
-      response = @offices.send false, false
+      response = @offices.send! ssl: false, verbose: false
       expect(response).to be_true
     end
   end

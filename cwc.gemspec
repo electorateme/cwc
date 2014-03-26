@@ -21,6 +21,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.5"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec", "~> 2.11"
+  spec.add_development_dependency "sinatra"
   
   spec.add_runtime_dependency "commander", "~> 4.1.6"
   spec.add_runtime_dependency "nokogiri", "~> 1.6.1"

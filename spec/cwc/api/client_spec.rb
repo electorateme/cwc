@@ -5,6 +5,10 @@ describe Cwc::Api::Client do
   before(:all) do
     Cwc.test_settings false
     @client = Cwc::Api::Client.new
+    @testing_options = {
+      ssl: false,
+      verbose: false,
+    }
   end
 
   context "with server responding correctly" do
@@ -12,10 +16,10 @@ describe Cwc::Api::Client do
       @url = "http://www.google.com"
     end
     it "should be able to request GET" do
-      expect(@client.request :get, @url, nil, false, false).to be_true
+      expect(@client.request :get, @url, @testing_options).to be_true
     end
     it "should be able to request POST" do
-      expect(@client.request :post, @url, nil, false, false).to be_true
+      expect(@client.request :post, @url, @testing_options).to be_true
     end
   end
 
@@ -24,7 +28,7 @@ describe Cwc::Api::Client do
       @url = "not/working/domain"
     end
     it "should detect that server has an error" do
-      response = @client.request :get, @url, nil, false, false
+      response = @client.request :get, @url, @testing_options
       expect(response.code).to eq("404")
     end
   end
