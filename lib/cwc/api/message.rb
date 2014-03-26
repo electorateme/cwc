@@ -46,7 +46,7 @@ module Cwc
       def self.example_data
         {
           delivery: {
-            id: SecureRandom.uuid,
+            id: SecureRandom.uuid.gsub("-", ""),
             date: Time.now.strftime("%Y%m%d"), #Example time
             agent: "Electorate.me",
             ackemailaddress: "email_acknowledge@electorate.me",
