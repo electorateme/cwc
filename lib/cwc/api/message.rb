@@ -9,13 +9,36 @@ module Cwc
       @@message_url = Cwc.api_version+'/message'
       @@validate_url = Cwc.api_version+'/validate'
 
-      def initialize(data={})
+      def initialize
         super()
         if block_given?
-          yield self 
-        else
-          @data = data
+          yield self
         end
+      end
+
+      def data= data
+        # Default values
+        if data.has_key? :delivery
+          data[:delivery][:agent] = "ElectorateMe" unless data[:delivery].has_key? :agent
+          unless data[:delivery].has_key? :agentcontact
+            data[:delivery][:agentcontact] = {
+              name: "Dan Haecker",
+              email: "dan@electorate.me",
+              phone: "703-594-1360"
+            }
+          end
+        else
+          data[:delivery] = {
+            agent: "ElectorateMe",
+            ackemailaddress: "email_acknowledge@electorate.me",
+            agentcontact: {
+              name: "Dan Haecker",
+              email: "dan@electorate.me",
+              phone: "703-594-1360"
+            }
+          }
+        end
+        @data = data
       end
 
       def send! options = {}
@@ -48,13 +71,6 @@ module Cwc
           delivery: {
             id: SecureRandom.uuid.gsub("-", ""),
             date: Time.now.strftime("%Y%m%d"), #Example time
-            agent: "ElectorateMe",
-            ackemailaddress: "email_acknowledge@electorate.me",
-            agentcontact: {
-              name: "Dan Haecker",
-              email: "dan@electorate.me",
-              phone: "703-594-1360"
-            },
             organization: "Example Organization",
             organizationcontact: {
               name: "Jane Smith",
