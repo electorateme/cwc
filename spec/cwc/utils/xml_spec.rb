@@ -13,7 +13,7 @@ describe Cwc::Utils::XML do
   end
 
   context "with incomplete data" do
-    it "should throw an XMLSyntaxError showing which field generated the error" do
+    it "should throw an XMLSyntaxError" do
       @example_data[:delivery] = {some: "error"}
       expect{
         @xml.parse_xml(@example_data)
