@@ -83,7 +83,7 @@ module Cwc
     # Test function
     def test_settings verbose = true
       self.api_key = "ABC123"
-      self.api_base = "http://hepu.ngrok.com"
+      self.api_base = "http://localhost:4567"
       if verbose
         puts "API Key: "          + self.api_key
         puts "API Version: "      + self.api_version

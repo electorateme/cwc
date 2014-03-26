@@ -8,9 +8,9 @@ program :description, 'CLI for interacting with cwc api'
  
 command :test do |c|
   c.syntax = 'cwc test'
-  c.summary = 'Tests API connection'
-  c.description = 'Tests API connection'
+  c.summary = 'Runs test server'
+  c.description = 'Runs test server using Sinatra to test API requests'
   c.action do |args, options|
-    puts "This is a test command for CWC gem"
+    exec 'ruby "lib/cwc/sinatra.rb"'
   end
 end
