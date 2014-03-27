@@ -20,6 +20,7 @@ module Cwc
         # Default values
         if data.has_key? :delivery
           data[:delivery][:agent] = "ElectorateMe" unless data[:delivery].has_key? :agent
+          data[:delivery][:ackemailaddress] = "email_acknowledge@electorate.me" unless data[:delivery].has_key? :ackemailaddress
           unless data[:delivery].has_key? :agentcontact
             data[:delivery][:agentcontact] = {
               name: "Dan Haecker",
