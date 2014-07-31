@@ -44,6 +44,8 @@ module Cwc
               raise ApiError.new("An error occurred with the request. Response: 400", response)
             when "404"
               raise ApiError.new("Command not found. Response: 404")
+            when "401"
+              raise ApiError.new("API key may be wrong. Response: 404")
             else
               raise ApiError.new("Error in the request. Response: "+response.code)
           end
