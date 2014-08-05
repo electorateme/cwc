@@ -50,7 +50,7 @@ module Cwc
         if handle_response(response, options[:verbose])
           # Request was successful
           puts "Response:\n"+ANSI.yellow(response.body) if options[:verbose]
-          response.code
+          JSON.parse(response.body) rescue response.body
         end
       end
 

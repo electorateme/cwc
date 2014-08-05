@@ -6,11 +6,11 @@ require 'cwc'
 program :version, Cwc::VERSION
 program :description, 'CLI for interacting with cwc api'
  
-command :test do |c|
-  c.syntax = 'cwc test'
-  c.summary = 'Runs test server'
+command :server do |c|
+  c.syntax = 'cwc server'
+  c.summary = 'Runs test server using Sinatra'
   c.description = 'Runs test server using Sinatra to test API requests'
   c.action do |args, options|
-    exec 'ruby "lib/cwc/sinatra.rb"'
+    exec 'ruby "'+File.dirname(__FILE__)+'/../lib/cwc/sinatra.rb"'
   end
 end

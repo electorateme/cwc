@@ -2,8 +2,7 @@ require 'sinatra'
 
 post '/v2/message' do
   content_type 'application/xml'
-  "Delivery Agent mismatch"
-  #Message Accepted
+  "Message Accepted"
 end
 
 post '/v2/validate' do

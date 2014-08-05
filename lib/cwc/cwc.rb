@@ -16,6 +16,10 @@ module Cwc
       api_base: "https://test-cwc.house.gov/"
     }
 
+    def configuration
+      @@configuration
+    end
+
     # Set and Get for configuration
     def set property, value
       @@configuration[property] = value
