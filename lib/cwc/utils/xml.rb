@@ -77,8 +77,12 @@ module Cwc
             # Get the line in the code where the error was generated
             error_line = e.backtrace[0].split(":")[1].to_i
             # Find the previous line in this file
-            line = IO.readlines(File.dirname(__FILE__)+"/lib/cwc/utils/xml.rb")[error_line]
-            raise XMLSyntaxError.new("Missing value for '"+line.scan(/<([a-zA-Z]*)>/).first.first+"' in data received")
+            begin
+              line = IO.readlines(File.dirname(__FILE__)+"/lib/cwc/utils/xml.rb")[error_line]
+              raise XMLSyntaxError.new("Missing value for '"+line.scan(/<([a-zA-Z]*)>/).first.first+"' in data received")
+            rescue
+              raise XMLSyntaxError.new("Error in XML in line: #{error_line.to_s}")
+            end
           end
       end
 
