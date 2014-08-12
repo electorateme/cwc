@@ -22,5 +22,23 @@ module Cwc
       end
       result
     end
+
+    def status_code
+      if @response
+        @response.code
+      end
+    end
+
+    def cwc_response
+      if @response
+        @response.body
+      end
+    end
+
+    def errors
+      if @response
+        parse_errors @response
+      end
+    end
   end
 end
