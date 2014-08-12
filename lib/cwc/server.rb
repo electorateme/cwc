@@ -6,6 +6,7 @@ class CwcServer < Sinatra::Base
     if !settings.whiny
       "Message Accepted"
     else
+      status 400
       content_type 'application/xml'
       %(<?xml version="1.0"?>
         <Errors>
@@ -21,6 +22,7 @@ class CwcServer < Sinatra::Base
     if !settings.whiny
       "Message Validated"
     else
+      status 400
       content_type 'application/xml'
       %(<?xml version="1.0"?>
         <Errors>
