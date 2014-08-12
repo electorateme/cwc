@@ -47,7 +47,7 @@ module Cwc
           xml += "<NewsletterOptIn>#{data[:recipient][:newsletteroptin]}</NewsletterOptIn>" if data[:recipient][:newsletteroptin]
           xml += "</Recipient>"
           xml += "<Constituent>"
-          xml += "<Prefix>#{data[:constituent][:prefix]}</Prefix>"
+          xml += "<Prefix>#{data[:constituent][:prefix]}</Prefix>" if data[:constituent][:prefix]
           xml += "<FirstName>#{data[:constituent][:firstname]}</FirstName>"
           xml += "<MiddleName>#{data[:constituent][:middlename]}</MiddleName>" if data[:constituent][:middlename]
           xml += "<LastName>#{data[:constituent][:lastname]}</LastName>"
@@ -59,7 +59,7 @@ module Cwc
           xml += "<City>#{data[:constituent][:city]}</City>"
           xml += "<StateAbbreviation>#{data[:constituent][:stateabbreviation]}</StateAbbreviation>"
           xml += "<Zip>#{data[:constituent][:zip]}</Zip>"
-          xml += "<Phone>#{data[:constituent][:phone]}</Phone>" if data[:constituent][:phone]
+          #xml += "<Phone>#{data[:constituent][:phone]}</Phone>" if data[:constituent][:phone]
           xml += "<AddressValidation>#{data[:constituent][:addressvalidation]}</AddressValidation>" if data[:constituent][:addressvalidation]
           xml += "<Email>#{data[:constituent][:email]}</Email>"
           xml += "<EmailValidation>#{data[:constituent][:emailvalidation]}</EmailValidation>" if data[:constituent][:emailvalidation]
@@ -76,7 +76,7 @@ module Cwc
           end
           xml += "<ProOrCon>#{data[:message][:proorcon]}</ProOrCon>" if data[:message][:proorcon]
           xml += "<OrganizationStatement>#{data[:message][:organizationstatement]}</OrganizationStatement>" if data[:message][:organizationstatement]
-          xml += "<ConstituentMessage>#{data[:message][:constituentmessage]}</ConstituentMessage>" if data[:message][:constituentmessage]
+          xml += "<ConstituentMessage>#{data[:message][:constituentmessage]}</ConstituentMessage>" if data[:message][:constituentmessage] && !data[:message][:organizationstatement]
           xml += "<MoreInfo>#{data[:message][:moreinfo]}</MoreInfo>" if data[:message][:moreinfo]
           xml += "</Message>"
           xml += "</CWC>"
