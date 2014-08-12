@@ -2,15 +2,18 @@
 
 require 'commander/import'
 require 'cwc'
+require 'cwc/server'
 
 program :version, Cwc::VERSION
-program :description, 'CLI for interacting with cwc api'
+program :description, 'CLI to interact with CWC locally'
  
 command :server do |c|
-  c.syntax = 'cwc server'
+  c.syntax = 'cwc server [options]'
+  c.option '--whiny', 'Returns errors for message requests'
   c.summary = 'Runs test server using Sinatra'
   c.description = 'Runs test server using Sinatra to test API requests'
   c.action do |args, options|
-    exec 'ruby "'+File.dirname(__FILE__)+'/../lib/cwc/sinatra.rb"'
+    CwcServer.set :whiny, options.whiny
+    CwcServer.run!
   end
 end
